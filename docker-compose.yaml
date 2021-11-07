@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: ./docker/workspace/Dockerfile
+    container_name: nextjs_oauth_sandbox-workspace
+    tty: true
+    volumes:
+      - .:/work/nextjs_oauth_sandbox
+      - nextjs_oauth_sandbox_node_modules_volume:/work/nextjs_oauth_sandbox/node_modules
+    working_dir: /work/nextjs_oauth_sandbox
+    ports:
+      - 3001:3000
+
+volumes:
+  nextjs_oauth_sandbox_node_modules_volume:
